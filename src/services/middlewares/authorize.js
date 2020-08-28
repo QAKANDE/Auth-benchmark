@@ -7,12 +7,12 @@ const authorize = async (req, res, next) => {
     const token = req.header("Authorization").replace("Bearer ", "") ;
     const decoded = await verifyJWT(token);
     const user = await UserModel.findOne({
-      _id: decoded.id,
+      _id: decoded._id,
     }) ;
     if (!user) {
         throw new Error() ;
     }
-    console.log(req.header);
+    console.log(req.headers);
     req.token = token ;
     req.user = user ;
     next() ;

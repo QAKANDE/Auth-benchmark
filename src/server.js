@@ -1,10 +1,12 @@
 const express = require ("express") ;
 const mongoose = require ("mongoose");
 const crypto = require("crypto") ;
+const cors = require("cors");
 const userRoutes = require("./services/users/index")
 const deezerRoutes = require("./services/deezerFetch/index")
 const listEndpoints = require("express-list-endpoints")
 const server = express() ;
+server.use(cors());
 const port =  3002 ;
 server.use(express.json()); 
 // var token = crypto.randomBytes(64).toString('hex');

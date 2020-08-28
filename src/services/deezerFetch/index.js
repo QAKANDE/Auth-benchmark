@@ -1,9 +1,9 @@
 const express = require("express");
 const axios = require("axios");
-const { authorize} = require("../middlewares/authorize")
+const { authorize} = require("../middlewares/authorize") ;
 const routes = express.Router(); 
 
-routes.get("/albums/:artist" ,authorize, async (req, res , next)=> {
+routes.get("/albums/:artist" , async (req, res , next)=> {
     try {
         const artist = req.params.artist ;
         const response = await axios(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}` , {
@@ -14,7 +14,7 @@ routes.get("/albums/:artist" ,authorize, async (req, res , next)=> {
           }
             });
             console.log(req.header);
-           res.send(response.data);
+        //    res.send(response.data);
     } catch (error) {
        console.log(error) ;
     }
