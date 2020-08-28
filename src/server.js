@@ -7,7 +7,7 @@ const deezerRoutes = require("./services/deezerFetch/index")
 const listEndpoints = require("express-list-endpoints")
 const server = express() ;
 server.use(cors());
-const port =  3002 ;
+const port =  3001 ;
 server.use(express.json()); 
 // var token = crypto.randomBytes(64).toString('hex');
 // console.log(token) ;

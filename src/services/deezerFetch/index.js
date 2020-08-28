@@ -13,8 +13,8 @@ routes.get("/albums/:artist" , async (req, res , next)=> {
               "x-rapidapi-key": "b41254000bmshb62e314b3254f24p1dac92jsn6f1fc3174939"
           }
             });
-            console.log(req.header);
-        //    res.send(response.data);
+           
+           res.send(response.data);
     } catch (error) {
        console.log(error) ;
     }

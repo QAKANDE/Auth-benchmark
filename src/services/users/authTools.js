@@ -4,7 +4,7 @@ const User = require("./schema");
 const authenticate = async (user) => {
   try {
     // generate tokens
-    const newAccessToken = await generateJWT({ id: user._id }) ;
+    const newAccessToken = await generateJWT({ _id: user._id }) ;
     await user.save() ;
     return { token: newAccessToken } ;
   } catch (error) {
@@ -18,7 +18,7 @@ const generateJWT = (payload) =>
     jwt.sign(
       payload,
       process.env.SECRET_KEY,
-      { expiresIn: 6 },
+      { expiresIn: "5m" },
       (err, token) => {
         if (err) rej(err) ;
         res(token) ;

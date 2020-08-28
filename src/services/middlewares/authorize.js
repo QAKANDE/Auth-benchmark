@@ -4,19 +4,22 @@ const { verifyJWT } = require("../users/authTools") ;
 
 const authorize = async (req, res, next) => {
   try {
-    const token = req.header("Authorization").replace("Bearer ", "") ;
+    const token = req.headers.authorization.replace("Bearer ", "") ;
+    console.log(token);
     const decoded = await verifyJWT(token);
+    console.log(decoded)
     const user = await UserModel.findOne({
       _id: decoded._id,
     }) ;
+    console.log(user)
     if (!user) {
         throw new Error() ;
     }
-    console.log(req.headers);
     req.token = token ;
     req.user = user ;
     next() ;
   } catch (e) {
+      console.log(e)
     const err = new Error("Please authenticate") ;
     err.httpStatusCode = 401 ;
     next(err) ;
